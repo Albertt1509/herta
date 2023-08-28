@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="img/favicon.ico">
+    <title>~Kuru Kuru</title>
+  </head>
+  <body>
+      
+    <img src="img/hertaa1.webp" class="preload">
+    <img src="img/hertaa2.webp" class="preload">
+    <div class="judul text-center">
+      <h1> Welcome To Kuru Kuru Website</h1>
+      <p class="sub-judul"> Webiste Ini Hanya Hiburan, Dia Cuma Bisa Muter Muter</p>
+    </div>
+
+    <div id="counter-container">
+     <p id="counter">0</p>
+     <br>
+     <p id="counter-times">Putaran</p>
+      <button id="container-button" onclick="counterClick()">Muter Muter</button>
+    </div>
+
+
+    <footer class="footer">
+  <div class="kontener text-center">
+    <p>&copy; 2023 Kuru Kuru. Alpha</p>
+  </div>
+</footer>
+    <!-- java support -->
+        <div id="grid">
+            <noscript>Browsermu tidak mendukung, download browser lain di aplikasi Playstore.
+              <br />This website relies on JavaScript, so please enable it or use another browser.</noscript>
+        </div>
+<!--audio -->
+<script>
+    //varible
+    var audioList = [
+        new Audio("audio/kuruto.mp3"),
+        new Audio("audio/kuru1.mp3"),
+        new Audio("audio/kuru2.mp3"),
+    ];
+
+    for (const audio of audioList) {
+        audio.preload = "auto";
+    }
+
+    var firstSquish = true;
+    //end varible
+
+    if (!localStorage.getItem("count")) {
+        localStorage.setItem("count", 0);
+    }
+
+    let temporaryCounter = parseInt(localStorage.getItem("count")) || 0;
+    const counterElement = document.getElementById("counter");
+    const counterTimesElement = document.getElementById("counter-times");
+    
+    displayCounter(temporaryCounter);
+
+    //counter button
+    function counterClick() {
+        ++temporaryCounter;
+        displayCounter(temporaryCounter);
+        localStorage.setItem("count", temporaryCounter);
+
+        playKuru();
+        Herta();
+    }
+    
+    function displayCounter(value) {
+        counterElement.innerText = value.toLocaleString();
+        counterTimesElement.innerText = value === 1 ? "time" : "times";
+    }
+
+    function playKuru() {
+        var audio;
+
+        if (firstSquish) {
+            firstSquish = false;
+            audio = audioList[0].cloneNode();
+        } else {
+            var random = Math.floor(Math.random() * 2) + 1;
+            audio = audioList[random].cloneNode();
+        }
+
+        audio.play();
+
+        audio.addEventListener("ended", function () {
+            this.remove();
+        });
+    }
+
+    function Herta() {
+        var counter_button = document.getElementById("container-button");
+        var id = null;
+
+        var random = Math.floor(Math.random() * 2) + 1;
+        var elem = document.createElement("img");
+        elem.src = `img/hertaa${random}.webp`;
+        elem.style.position = "absolute";
+        elem.style.right = "-510px";
+        elem.style.top = counter_button.getClientRects()[0].bottom + scrollY - 430 + "px"
+        elem.style.zIndex = "-1";
+        document.body.appendChild(elem);
+
+        var pos = -510;
+        var limit = window.innerWidth + 510;
+        clearInterval(id);
+        id = setInterval(frame, 12);
+        function frame() {
+            if (pos >= limit) {
+                clearInterval(id);
+                elem.remove()
+            } else {
+                pos += 20;
+                elem.style.right = pos + 'px';
+            }
+        }
+    }
+    //end counter button
+</script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('js/script.js')
+      .then((registration) => {
+        console.log('Service Worker registered:', registration);
+      })
+      .catch((error) => {
+        console.log('Service Worker registration failed:', error);
+      });
+  }
+</script>
+
+   <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+  </body>
+</html>

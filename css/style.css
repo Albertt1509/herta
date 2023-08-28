@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: 'Inter', sans-serif, 'Kanit', sans-serif;
+    background-color: #9878e7;
+}
+.judul{
+   font-size: 40px;
+   color: white;
+}
+
+.sub-judul
+{
+    font-size: 20px;
+}
+#countainer-countainer{
+    text-align: center;
+    font-weight: bold;
+    margin: 64px 0;
+}
+
+#counter-container{
+    text-align: center; 
+    font-weight: bold;
+    margin: 64px 0;
+} 
+#counter {
+    color: #574f84;
+    font-size: 2em;
+}
+
+#counter-container > p {
+    text-shadow: #9d88d3 0 0 10px;
+}
+
+#container-button{
+    background-color: #574f84;
+    border: none;
+    border-radius: 16px;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    margin-top: 16px;
+}
+.preload{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    visibility: hidden;  
+}
+
+
+/* CSS untuk footer */
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+
+.footer p {
+  margin: 0;
+}
+
+.kontener {
+  max-width: 1200px;
+  margin: 0 auto;
+}
