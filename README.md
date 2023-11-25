@@ -1,3 +1,2 @@
 ini adalah website gabut doang,
-
-https://replit.com/@LordKazuma3/Herta
+https://herta.lordkazuma3.repl.co/
